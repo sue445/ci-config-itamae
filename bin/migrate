@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "optparse"
+
+require_relative "../lib/cli"
+
+opt = OptionParser.new
+
+dry_run        = false
+recipe         = nil
+repo           = nil
+commit_message = nil
+
+opt.on("--dry-run")                      { |v| dry_run = v }
+opt.on("--recipe=RECIPE")                { |v| recipe = v }
+opt.on("--repo=REPO")                    { |v| repo = v }
+opt.on("-m", "--message=COMMIT_MESSAGE") { |v| commit_message = v }
+
+opt.parse!(ARGV)
+
+raise "--recipe is required" unless recipe
+raise "--repo is required" unless repo
+raise "--message is required" unless commit_message
+
+cli = Cli.new(recipe: recipe, repo: repo, commit_message: commit_message, dry_run: dry_run)
+cli.run
