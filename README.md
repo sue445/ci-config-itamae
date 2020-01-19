@@ -1,1 +1,1 @@
-# repo-config-itamae
+# ci-config-itamae
