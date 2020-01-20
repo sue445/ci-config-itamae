@@ -1,3 +1,4 @@
+require "shellwords"
 require "tmpdir"
 require "yaml"
 
@@ -25,11 +26,20 @@ class Cli
 
   # @param repo [String]
   def run_with_single_repo(repo)
-    Dir.chdir(repo_fullpath(repo)) do
+    within_repo_dir(repo) do
       sh "git checkout master"
       sh "git pull --ff-only"
     end
+
     run_itamae(repo)
+
+    within_repo_dir(repo) do
+      if updated_repo?
+        sh "git checkout -b #{branch_name}"
+        sh "git commit -am '#{@commit_message.gsub("'", "\\\\'")}'"
+        sh "git push origin #{branch_name}"
+      end
+    end
   end
 
   # @param repo [String]
@@ -54,6 +64,13 @@ class Cli
   end
 
   # @param repo [String]
+  def within_repo_dir(repo)
+    Dir.chdir(repo_fullpath(repo)) do
+      yield
+    end
+  end
+
+  # @param repo [String]
   # @return [String]
   def repo_fullpath(repo)
     fullpath = `ghq list --full-path --exact #{repo}`.strip
@@ -70,5 +87,17 @@ class Cli
 
   def debug_logging?
     @log_level == "debug"
+  end
+
+  def branch_name
+    @branch_name ||=
+      [
+        Time.now.strftime("%Y%m%d%H%M%S"),
+        File.basename(@recipe, ".rb").gsub(/^(\d+)_/, ""),
+      ].join("_")
+  end
+
+  def updated_repo?
+    !`git status`.include?("nothing to commit, working tree clean")
   end
 end
