@@ -31,42 +31,21 @@ YAML
     YAML
 
     # Remove setup-rbenv
-    content.gsub!(<<-YAML, "")
-      - name: Set up rbenv
-        uses: masa-iwasaki/setup-rbenv@1.1.0
-
-      - name: Cache RBENV_ROOT
-        uses: actions/cache@v1
-        id: cache_rbenv
-        with:
-          path: ~/.rbenv/versions
-          key: v1-rbenv-${{ runner.os }}-${{ matrix.ruby }}
-        if: "!endsWith(matrix.ruby, '-dev')"
-
-      - name: Reinstall libssl-dev
-        run: |
-          set -xe
-          sudo apt-get remove -y libssl-dev
-          sudo apt-get install -y libssl-dev=1.0.2g-1ubuntu4.15
-        if: matrix.runner == 'ubuntu-16.04'
-
-      - name: Install Ruby
-        run: |
-          set -xe
-          eval "$(rbenv init -)"
-          rbenv install -s $RBENV_VERSION
-          gem install bundler --no-document -v 1.17.3 || true
-        env:
-          RBENV_VERSION: ${{ matrix.ruby }}
-        continue-on-error: ${{ endsWith(matrix.ruby, '-dev') }}
-
-    YAML
+    content.gsub!(/^\s+- name: Set up rbenv.+?\n\n/m, "")
+    content.gsub!(/^\s+- name: Cache RBENV_ROOT.+?\n\n/m, "")
+    content.gsub!(/^\s+- name: Reinstall libssl-dev.+?\n\n/m, "")
+    content.gsub!(/^\s+- name: Install Ruby.+?env:.+?\n\n/m, "")
 
     content.gsub!(<<-YAML, <<-YAML)
           set -xe
           eval "$(rbenv init -)"
     YAML
           set -xe
+    YAML
+
+    content.gsub!(<<-YAML, "")
+        env:
+          RBENV_VERSION: ${{ matrix.ruby }}
     YAML
 
     # Update continue-on-error:
