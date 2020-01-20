@@ -8,11 +8,13 @@ class Cli
   # @param repo [String]
   # @param commit_message [String]
   # @param dry_run [Boolean]
-  def initialize(recipe:, repo:, commit_message: , dry_run:)
+  # @param log_level [String]
+  def initialize(recipe:, repo:, commit_message: , dry_run:, log_level:)
     @recipe = recipe
     @repo = repo
     @commit_message = commit_message
     @dry_run = dry_run
+    @log_level = log_level
   end
 
   def run
@@ -23,6 +25,10 @@ class Cli
 
   # @param repo [String]
   def run_with_single_repo(repo)
+    Dir.chdir(repo_fullpath(repo)) do
+      sh "git checkout master"
+      sh "git pull --ff-only"
+    end
     run_itamae(repo)
   end
 
@@ -39,10 +45,11 @@ class Cli
       args = [
         @recipe,
         "--node-yaml=#{node_yaml}",
+        "--log-level=#{@log_level}"
       ]
       args << "--dry-run" if @dry_run
 
-      system("itamae local #{args.join(" ")}", exception: true)
+      sh "itamae local #{args.join(" ")}"
     end
   end
 
@@ -52,5 +59,16 @@ class Cli
     fullpath = `ghq list --full-path --exact #{repo}`.strip
     raise "NotFound: '#{repo}'" if fullpath.empty?
     fullpath
+  end
+
+  def sh(command)
+    if debug_logging?
+      puts command
+    end
+    system(command, exception: true)
+  end
+
+  def debug_logging?
+    @log_level == "debug"
   end
 end

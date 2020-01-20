@@ -8,11 +8,13 @@ require_relative "../lib/cli"
 opt = OptionParser.new
 
 dry_run        = false
+log_level      = "info"
 recipe         = nil
 repo           = nil
 commit_message = nil
 
 opt.on("--dry-run")                      { |v| dry_run = v }
+opt.on("--log-level=LOG_LEVEL")          { |v| log_level = v }
 opt.on("--recipe=RECIPE")                { |v| recipe = v }
 opt.on("--repo=REPO")                    { |v| repo = v }
 opt.on("-m", "--message=COMMIT_MESSAGE") { |v| commit_message = v }
@@ -23,5 +25,5 @@ raise "--recipe is required" unless recipe
 raise "--repo is required" unless repo
 raise "--message is required" unless commit_message
 
-cli = Cli.new(recipe: recipe, repo: repo, commit_message: commit_message, dry_run: dry_run)
+cli = Cli.new(recipe: recipe, repo: repo, commit_message: commit_message, dry_run: dry_run, log_level: log_level)
 cli.run
