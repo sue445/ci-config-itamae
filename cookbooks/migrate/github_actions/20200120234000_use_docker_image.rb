@@ -20,35 +20,43 @@ jobs:
 YAML
 
     # Update jobs.test.strategy.matrix.ruby
-    content.gsub!(/- (\d+)\.(\d+)\.(\d+)$/) { "- ruby:#{$1}.#{$2}" }
+    content.gsub!(/- (\d+)\.(\d+)\.(\d+)(-p\d+)?$/) { "- ruby:#{$1}.#{$2}" }
     content.gsub!("2.8.0-dev", "rubylang/ruby:master-nightly-bionic")
 
     # Update jobs.test.strategy.matrix.include
     if content.include?("2.8.0-dev")
-      content.gsub!(/^        include:\n.+?\n        (\S+?):\n/m) do
+      content.gsub!(/^        include:\n.+?\n([ ]{1,8})(\S+?):\n/m) do
         <<-YAML
         include:
           - ruby: rubylang/ruby:master-nightly-bionic
             allow_failures: "true"
 
-        #{$1}:
+#{$1}#{$2}:
         YAML
       end
     else
-      content.gsub!(/^        include:\n.+?\n        (\S+?):\n/m) do
-        <<-YAML
-        #{$1}:
-        YAML
+      yaml = <<-YAML
+        include:
+          - ruby: rubylang/ruby:master-nightly-bionic
+            allow_failures: "true"
+      YAML
+
+      unless content.include?(yaml)
+        content.gsub!(/^        include:\n.+?\n([ ]{1,8})(\S+?):\n/m) do
+          <<-YAML
+#{$1}#{$2}:
+          YAML
+        end
       end
     end
 
     content.gsub!(/- ruby:(\s+)(\d+)\.(\d+)\.(\d+)/) { "- ruby:#{$1}ruby:#{$2}.#{$3}" }
 
     # Remove setup-rbenv
-    content.gsub!(/^\s+- name: Set up rbenv.+?\n\n/m, "")
-    content.gsub!(/^\s+- name: Cache RBENV_ROOT.+?\n\n/m, "")
-    content.gsub!(/^\s+- name: Reinstall libssl-dev.+?\n\n/m, "")
-    content.gsub!(/^\s+- name: Install Ruby.+?env:.+?\n\n/m, "")
+    content.gsub!(/^\s+- name: Set up rbenv.+?\n\n/m, "\n\n")
+    content.gsub!(/^\s+- name: Cache RBENV_ROOT.+?\n\n/m, "\n\n")
+    content.gsub!(/^\s+- name: Reinstall libssl-dev.+?\n\n/m, "\n\n")
+    content.gsub!(/^\s+- name: Install Ruby.+?env:.+?\n\n/m, "\n\n")
 
     content.gsub!(<<-YAML, <<-YAML)
           set -xe

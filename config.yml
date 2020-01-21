@@ -1,4 +1,155 @@
+# gems on GitHub Actions
+github.com/sue445/activerecord-compatible_legacy_migration:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/activerecord-simple_index_name:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/capistrano-itamae:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/chatwork_webhook_verify:
+  tags:
+    - github_actions
+    - gem
+
 github.com/sue445/compact_blank:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/cure_line:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/date_discreter:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/faker-precure:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/faraday_boolean:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/fluent-plugin-chatwork:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/gitlab_mr_release:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/google_holiday_calendar:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/heart_seed:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/index_shotgun:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/itamae-plugin-recipe-consul:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/itamae-plugin-recipe-git_now:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/itamae-plugin-recipe-gitlab_runner:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/itamae-plugin-recipe-tig:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/itamae-plugin-resource-encrypted_remote_file:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/kiriban_getter:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/omniauth-chatwork:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/pixela:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/rspec-temp_dir:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/rspec-time_stop:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/rubicure:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/rubocop-itamae:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/rubocop_auto_corrector:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/sengiri_yaml:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/syobocalite:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/tweet_sanitizer:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/twitter_retry:
   tags:
     - github_actions
     - gem
