@@ -28,6 +28,7 @@ YAML
         include:
           - ruby: rubylang/ruby:master-nightly-bionic
             allow_failures: "true"
+
     YAML
 
     # Remove setup-rbenv
@@ -48,9 +49,6 @@ YAML
           RBENV_VERSION: ${{ matrix.ruby }}
     YAML
 
-    # Update continue-on-error:
-    content.gsub!("continue-on-error: ${{ endsWith(matrix.ruby, '-dev') }}", "continue-on-error: ${{ matrix.allow_failures == 'true' }}")
-
     # Update Code Climate Test Reporter
     content.gsub!(<<-YAML, <<-YAML)
       - name: Setup Code Climate Test Reporter
@@ -58,6 +56,7 @@ YAML
         with:
           codeclimate-test-reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
           command: before-build
+        continue-on-error: ${{ endsWith(matrix.ruby, '-dev') }}
     YAML
       - name: Setup Code Climate Test Reporter
         uses: aktions/codeclimate-test-reporter@v1
@@ -65,6 +64,7 @@ YAML
           codeclimate-test-reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
           command: before-build
         if: matrix.ruby >= 'ruby:2.4'
+        continue-on-error: ${{ matrix.allow_failures == 'true' }}
     YAML
 
     content.gsub!(<<-YAML, <<-YAML)
@@ -74,6 +74,7 @@ YAML
           codeclimate-test-reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
           command: after-build
         if: always()
+        continue-on-error: ${{ endsWith(matrix.ruby, '-dev') }}
     YAML
       - name: Teardown Code Climate Test Reporter
         uses: aktions/codeclimate-test-reporter@v1
@@ -81,7 +82,11 @@ YAML
           codeclimate-test-reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
           command: after-build
         if: matrix.ruby >= 'ruby:2.4' && always()
+        continue-on-error: ${{ matrix.allow_failures == 'true' }}
     YAML
+
+    # Update continue-on-error:
+    content.gsub!("continue-on-error: ${{ endsWith(matrix.ruby, '-dev') }}", "continue-on-error: ${{ matrix.allow_failures == 'true' }}")
   end
 
   only_if "ls #{node[:repo]}/.github/workflows/test.yml"
