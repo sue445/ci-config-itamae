@@ -8,15 +8,17 @@ class Cli
   # @param commit_message [String]
   # @param dry_run [Boolean]
   # @param log_level [String]
-  # @param tags [Array<String>]
+  # @param include_tags [Array<String>]
+  # @param exclude_tags [Array<String>]
   # @param config_file [String]
-  def initialize(recipe:, repo:, commit_message: , dry_run:, log_level:, tags:, config_file:)
+  def initialize(recipe:, repo:, commit_message: , dry_run:, log_level:, include_tags:, exclude_tags:, config_file:)
     @recipe = recipe
     @repo = repo
     @commit_message = commit_message
     @dry_run = dry_run
     @log_level = log_level
-    @tags = tags
+    @include_tags = include_tags
+    @exclude_tags = exclude_tags
     @config = YAML.load_file(config_file)
   end
 
@@ -28,15 +30,7 @@ class Cli
       return
     end
 
-    repos =
-      @config.select do |_repo, params|
-        if @tags
-          tags = params["tags"] || []
-          @tags.all? { |tag| tags.include?(tag) }
-        else
-          true
-        end
-      end.keys
+    repos = @config.select { |_repo, params| target_tag?(params["tags"]) }.keys
 
     repos.each do |repo|
       run_with_single_repo(repo)
@@ -44,6 +38,22 @@ class Cli
   end
 
   private
+
+  def target_tag?(tags)
+    if @include_tags.empty? && @exclude_tags.empty?
+      return true
+    end
+
+    unless @exclude_tags.empty?
+      return false if @exclude_tags.any? { |exclude_tag| tags.include?(exclude_tag) }
+    end
+
+    unless @include_tags.empty?
+      return false if @include_tags.any? { |include_tag| !tags.include?(include_tag) }
+    end
+
+    true
+  end
 
   # @param repo [String]
   def run_with_single_repo(repo)
