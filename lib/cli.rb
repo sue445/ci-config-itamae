@@ -8,24 +8,57 @@ class Cli
   # @param commit_message [String]
   # @param dry_run [Boolean]
   # @param log_level [String]
-  def initialize(recipe:, repo:, commit_message: , dry_run:, log_level:)
+  # @param include_tags [Array<String>]
+  # @param exclude_tags [Array<String>]
+  # @param config_file [String]
+  def initialize(recipe:, repo:, commit_message: , dry_run:, log_level:, include_tags:, exclude_tags:, config_file:)
     @recipe = recipe
     @repo = repo
     @commit_message = commit_message
     @dry_run = dry_run
     @log_level = log_level
+    @include_tags = include_tags
+    @exclude_tags = exclude_tags
+    @config = YAML.load_file(config_file)
   end
 
   def run
     Dotenv.load
 
-    run_with_single_repo(@repo)
+    if @repo
+      run_with_single_repo(@repo)
+      return
+    end
+
+    repos = @config.select { |_repo, params| target_tag?(params["tags"]) }.keys
+
+    repos.each do |repo|
+      run_with_single_repo(repo)
+    end
   end
 
   private
 
+  def target_tag?(tags)
+    if @include_tags.empty? && @exclude_tags.empty?
+      return true
+    end
+
+    unless @exclude_tags.empty?
+      return false if @exclude_tags.any? { |exclude_tag| tags.include?(exclude_tag) }
+    end
+
+    unless @include_tags.empty?
+      return false if @include_tags.any? { |include_tag| !tags.include?(include_tag) }
+    end
+
+    true
+  end
+
   # @param repo [String]
   def run_with_single_repo(repo)
+    puts "[START] #{repo}"
+
     within_repo_dir(repo) do
       sh "git checkout master"
       sh "git pull --ff-only"
@@ -43,6 +76,8 @@ class Cli
         sh "hub pull-request --push --message '#{escaped_commit_message}'"
       end
     end
+
+    puts "[END] #{repo}"
   end
 
   # @param repo [String]
