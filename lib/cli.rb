@@ -93,11 +93,11 @@ class Cli
   end
 
   def branch_name
-    @branch_name ||=
-      [
-        Time.now.strftime("%Y%m%d%H%M%S"),
-        File.basename(@recipe, ".rb").gsub(/^(\d+)_/, ""),
-      ].join("_")
+    return @branch_name if @branch_name
+
+    timestamp = Time.now.strftime("%Y%m%d%H%M%S")
+    recipe_name = File.basename(@recipe, ".rb").gsub(/^(\d+)_/, "")
+    @branch_name = "migrator/#{timestamp}_#{recipe_name}"
   end
 
   def updated_repo?
