@@ -1,10 +1,8 @@
-require "shellwords"
 require "tmpdir"
 require "yaml"
+require "dotenv"
 
 class Cli
-  include FileUtils
-
   # @param recipe [String]
   # @param repo [String]
   # @param commit_message [String]
@@ -19,6 +17,8 @@ class Cli
   end
 
   def run
+    Dotenv.load
+
     run_with_single_repo(@repo)
   end
 
@@ -35,9 +35,12 @@ class Cli
 
     within_repo_dir(repo) do
       if updated_repo?
+        escaped_commit_message = @commit_message.gsub("'", "\\\\'")
+
         sh "git checkout -b #{branch_name}"
-        sh "git commit -am '#{@commit_message.gsub("'", "\\\\'")}'"
+        sh "git commit -am '#{escaped_commit_message}'"
         sh "git push origin #{branch_name}"
+        sh "hub pull-request --push --message '#{escaped_commit_message}'"
       end
     end
   end

@@ -24,12 +24,25 @@ YAML
     content.gsub!("2.8.0-dev", "rubylang/ruby:master-nightly-bionic")
 
     # Update jobs.test.strategy.matrix.include
-    content.gsub!(/^        include:\n.+?\n\n/m, <<-YAML)
+    if content.include?("2.8.0-dev")
+      content.gsub!(/^        include:\n.+?\n        (\S+?):\n/m) do
+        <<-YAML
         include:
           - ruby: rubylang/ruby:master-nightly-bionic
             allow_failures: "true"
 
-    YAML
+        #{$1}:
+        YAML
+      end
+    else
+      content.gsub!(/^        include:\n.+?\n        (\S+?):\n/m) do
+        <<-YAML
+        #{$1}:
+        YAML
+      end
+    end
+
+    content.gsub!(/- ruby:(\s+)(\d+)\.(\d+)\.(\d+)/) { "- ruby:#{$1}ruby:#{$2}.#{$3}" }
 
     # Remove setup-rbenv
     content.gsub!(/^\s+- name: Set up rbenv.+?\n\n/m, "")
@@ -87,6 +100,8 @@ YAML
 
     # Update continue-on-error:
     content.gsub!("continue-on-error: ${{ endsWith(matrix.ruby, '-dev') }}", "continue-on-error: ${{ matrix.allow_failures == 'true' }}")
+
+    content.gsub!("sudo apt-get", "apt-get")
   end
 
   only_if "ls #{node[:repo]}/.github/workflows/test.yml"
