@@ -160,3 +160,30 @@ github.com/sue445/twitter_retry:
   tags:
     - github_actions
     - gem
+
+# Go
+github.com/sue445/go-doorkeeper:
+  tags:
+    - github_actions
+    - go
+
+github.com/sue445/plant_erd:
+  tags:
+    - github_actions
+    - go
+
+github.com/sue445/zatsu_monitor:
+  tags:
+    - github_actions
+    - go
+
+# chrome extension
+github.com/sue445/chrome-gitlab-notifier:
+  tags:
+    - github_actions
+    - js
+
+# other
+github.com/sue445/jenkins-backup-script:
+  tags:
+    - github_actions
