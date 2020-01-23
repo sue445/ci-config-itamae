@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "optparse"
+
+template = nil
+
+opt = OptionParser.new
+opt.on("-t", "--template=TEMPLATE") { |v| template = v }
+
+opt.parse!(ARGV)
+
+raise "--template is required" unless template
+raise "ARGV is required" unless ARGV[0]
+
+dist_migrate_dir = "#{__dir__}/../cookbooks/migrate/#{template}"
+
+FileUtils.mkdir_p(dist_migrate_dir)
+
+timestamp = Time.now.strftime("%Y%m%d%H%M%S")
+name = ARGV[0]
+
+FileUtils.cp("#{__dir__}/../cookbooks/templates/#{template}.rb", "#{dist_migrate_dir}/#{timestamp}_#{name}.rb")
