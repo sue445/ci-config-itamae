@@ -3,14 +3,13 @@
 require "bundler/setup"
 require "optparse"
 
-template = nil
+template = "github_actions"
 
 opt = OptionParser.new
 opt.on("-t", "--template=TEMPLATE") { |v| template = v }
 
 opt.parse!(ARGV)
 
-raise "--template is required" unless template
 raise "ARGV is required" unless ARGV[0]
 
 dist_migrate_dir = "#{__dir__}/../cookbooks/migrate/#{template}"
