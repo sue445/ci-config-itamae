@@ -112,7 +112,12 @@ class Cli
   # @return [String]
   def repo_fullpath(repo)
     fullpath = `ghq list --full-path --exact #{repo}`.strip
-    raise "NotFound: '#{repo}'" if fullpath.empty?
+
+    if fullpath.empty?
+      sh "ghq get #{repo}"
+      fullpath = `ghq list --full-path --exact #{repo}`.strip
+    end
+
     fullpath
   end
 
