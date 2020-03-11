@@ -45,8 +45,10 @@ e.g.
 
 ```bash
 # Apply to a repo
-$ ./bin/migrate --recipe=cookbooks/migrate/github_actions/20200311232827_some_migration.rb -m "This is commit message" --repo=github.com/sue445/rubicure
+$ ./bin/migrate --recipe=cookbooks/migrate/github_actions/20200311232827_some_migration.rb -m "This is commit message" --repo=github.com/sue445/rubicure --dry-run
 
 # Apply to multiple repos
-$ ./bin/migrate --recipe=cookbooks/migrate/github_actions/20200311232827_some_migration.rb -m "This is commit message" --include=gem
+$ ./bin/migrate --recipe=cookbooks/migrate/github_actions/20200311232827_some_migration.rb -m "This is commit message" --include=gem --dry-run
 ```
+
+Run `./bin/migrate` without `--dry-run`.
