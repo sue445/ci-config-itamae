@@ -12,11 +12,14 @@ opt.parse!(ARGV)
 
 raise "ARGV is required" unless ARGV[0]
 
-dist_migrate_dir = "#{__dir__}/../cookbooks/migrate/#{template}"
+dist_migrate_dir = File.expand_path("../cookbooks/migrate/#{template}", __dir__)
 
 FileUtils.mkdir_p(dist_migrate_dir)
 
 timestamp = Time.now.strftime("%Y%m%d%H%M%S")
 name = ARGV[0]
 
-FileUtils.cp("#{__dir__}/../cookbooks/templates/#{template}.rb", "#{dist_migrate_dir}/#{timestamp}_#{name}.rb")
+dist_file = "#{dist_migrate_dir}/#{timestamp}_#{name}.rb"
+FileUtils.cp("#{__dir__}/../cookbooks/templates/#{template}.rb", dist_file)
+
+puts "Write to #{dist_file}"
