@@ -68,7 +68,7 @@ class Cli
 
     within_repo_dir(repo) do
       if updated_repo?
-        escaped_commit_message = @commit_message.gsub("'", "\\\\'")
+        escaped_commit_message = @commit_message.gsub("'", "'\\\\''")
 
         sh "git checkout -b #{branch_name}"
         sh "git commit -am '#{escaped_commit_message}'"
