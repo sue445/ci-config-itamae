@@ -36,13 +36,15 @@ on:
     end
 
     # Add continue-on-error to homoluctus/slatify@master
-    content.gsub!(%r{        uses: homoluctus/slatify@master\n(.+?)\n        with:\n}m) do
-      <<-YAML
+    unless content.match?(%r{        uses: homoluctus/slatify@master\n(.+?)\n        continue-on-error: true\n        with:\n}m)
+      content.gsub!(%r{        uses: homoluctus/slatify@master\n(.+?)\n        with:\n}m) do
+        <<-YAML
         uses: homoluctus/slatify@master
 #{$1}
         continue-on-error: true
         with:
-      YAML
+        YAML
+      end
     end
   end
 
