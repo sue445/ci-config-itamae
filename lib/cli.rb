@@ -67,7 +67,7 @@ class Cli
     run_itamae(repo)
 
     within_repo_dir(repo) do
-      if updated_repo?
+      if !@dry_run && updated_repo?
         escaped_commit_message = @commit_message.gsub("'", "'\\\\''")
 
         sh "git checkout -b #{branch_name}"
