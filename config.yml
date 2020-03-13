@@ -168,6 +168,7 @@ github.com/sue445/condo3:
     - circleci
     - go
     - go-mod-tidy-pr
+    - gaego
 
 github.com/sue445/go-doorkeeper:
   tags:
