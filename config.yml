@@ -161,6 +161,52 @@ github.com/sue445/twitter_retry:
     - github_actions
     - gem
 
+# ruby apps
+github.com/sue445/app-stat-api:
+  tags:
+    - circleci
+    - ruby2.7
+
+github.com/sue445/dockerhub-slack-webhook:
+  tags:
+    - circleci
+    - ruby2.7
+
+github.com/sue445/emoy_webhook:
+  tags:
+    - circleci
+    - ruby2.7
+
+github.com/sue445/ccc_privacy_crawler:
+  tags:
+    - circleci
+    - ruby2.6
+
+github.com/sue445/chatwork_mention_task:
+  tags:
+    - circleci
+    - ruby2.6
+
+github.com/sue445/cure-bots:
+  tags:
+    - wercker
+    - ruby2.6
+
+github.com/sue445/cure-mastodon-bots:
+  tags:
+    - wercker
+    - ruby2.6
+
+github.com/sue445/sebastian-badge:
+  tags:
+    - circleci
+    - ruby2.6
+
+github.com/sue445/twittodon:
+  tags:
+    - wercker
+    - ruby2.6
+
 # Go
 github.com/sue445/condo3:
   tags:
