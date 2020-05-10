@@ -185,12 +185,12 @@ github.com/sue445/ccc_privacy_crawler:
 github.com/sue445/chatwork_mention_task:
   tags:
     - circleci
-    - ruby2.6
+    - ruby2.7
 
 github.com/sue445/cure-bots:
   tags:
     - wercker
-    - ruby2.6
+    - ruby2.7
 
 github.com/sue445/cure-mastodon-bots:
   tags:
