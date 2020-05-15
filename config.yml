@@ -180,7 +180,7 @@ github.com/sue445/emoy_webhook:
 github.com/sue445/ccc_privacy_crawler:
   tags:
     - circleci
-    - ruby2.6
+    - ruby2.7
 
 github.com/sue445/chatwork_mention_task:
   tags:
@@ -200,7 +200,7 @@ github.com/sue445/cure-mastodon-bots:
 github.com/sue445/sebastian-badge:
   tags:
     - circleci
-    - ruby2.6
+    - ruby2.7
 
 github.com/sue445/twittodon:
   tags:
