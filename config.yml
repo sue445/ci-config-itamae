@@ -161,6 +161,16 @@ github.com/sue445/twitter_retry:
     - github_actions
     - gem
 
+github.com/sue445/prismdb-ruby:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/faker-pretty_series:
+  tags:
+    - github_actions
+    - gem
+
 # ruby apps
 github.com/sue445/app-stat-api:
   tags:
@@ -234,6 +244,18 @@ github.com/sue445/zatsu_monitor:
     - go
     - go-mod-tidy-pr
 
+github.com/sue445/gcp-secretmanagerenv:
+  tags:
+    - github_actions
+    - go
+    - go-mod-tidy-pr
+
+github.com/sue445/gcp-kmsenv:
+  tags:
+    - github_actions
+    - go
+    - go-mod-tidy-pr
+
 # chrome extension
 github.com/sue445/chrome-gitlab-notifier:
   tags:
@@ -242,5 +264,9 @@ github.com/sue445/chrome-gitlab-notifier:
 
 # other
 github.com/sue445/jenkins-backup-script:
+  tags:
+    - github_actions
+
+github.com/sue445/go-mod-tidy-pr:
   tags:
     - github_actions
