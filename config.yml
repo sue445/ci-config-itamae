@@ -223,20 +223,17 @@ github.com/sue445/condo3:
     - github_actions
     - circleci
     - go
-    - go-mod-tidy-pr
     - gaego
 
 github.com/sue445/go-doorkeeper:
   tags:
     - github_actions
     - go
-    - go-mod-tidy-pr
 
 github.com/sue445/plant_erd:
   tags:
     - github_actions
     - go
-    - go-mod-tidy-pr
 
 github.com/sue445/zatsu_monitor:
   tags:
@@ -248,13 +245,11 @@ github.com/sue445/gcp-secretmanagerenv:
   tags:
     - github_actions
     - go
-    - go-mod-tidy-pr
 
 github.com/sue445/gcp-kmsenv:
   tags:
     - github_actions
     - go
-    - go-mod-tidy-pr
 
 # chrome extension
 github.com/sue445/chrome-gitlab-notifier:
