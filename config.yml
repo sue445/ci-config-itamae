@@ -199,12 +199,12 @@ github.com/sue445/chatwork_mention_task:
 
 github.com/sue445/cure-bots:
   tags:
-    - wercker
-    - ruby2.7
+    - circleci
+    - ruby3.0
 
 github.com/sue445/cure-mastodon-bots:
   tags:
-    - wercker
+    - circleci
     - ruby2.6
 
 github.com/sue445/sebastian-badge:
@@ -214,7 +214,7 @@ github.com/sue445/sebastian-badge:
 
 github.com/sue445/twittodon:
   tags:
-    - wercker
+    - circleci
     - ruby2.6
 
 # Go
