@@ -2,6 +2,7 @@
 
 require "bundler/setup"
 require "optparse"
+require "fileutils"
 
 template = "github_actions"
 
