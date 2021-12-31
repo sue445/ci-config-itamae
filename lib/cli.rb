@@ -70,7 +70,7 @@ class Cli
         sh "git checkout -b #{branch_name}"
         sh "git commit -am '#{escaped_commit_message}'"
         sh "git push origin #{branch_name}"
-        sh "gh pr create --title '#{escaped_commit_message}'"
+        sh "gh pr create --fill --title '#{escaped_commit_message}'"
       end
     end
 
