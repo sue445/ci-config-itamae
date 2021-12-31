@@ -3,7 +3,7 @@
 ## Requires
 * Ruby
 * [ghq](https://github.com/motemen/ghq)
-* [hub](https://github.com/github/hub)
+* [gh](https://github.com/cli/cli)
 
 ## Setup
 ```bash
