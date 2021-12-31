@@ -1,6 +1,5 @@
 require "tmpdir"
 require "yaml"
-require "dotenv"
 
 class Cli
   # @param recipe [String]
@@ -23,8 +22,6 @@ class Cli
   end
 
   def run
-    Dotenv.load
-
     if @repo
       run_with_single_repo(@repo)
       return
