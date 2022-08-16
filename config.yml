@@ -45,6 +45,11 @@ github.com/sue445/faraday_boolean:
     - github_actions
     - gem
 
+github.com/sue445/faraday-mashify:
+  tags:
+    - github_actions
+    - gem
+
 github.com/sue445/fluent-plugin-chatwork:
   tags:
     - github_actions
@@ -167,6 +172,21 @@ github.com/sue445/prismdb-ruby:
     - gem
 
 github.com/sue445/faker-pretty_series:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/rubocop-isucon:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/datadog_thread_tracer:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/mysql2-nested_hash_bind:
   tags:
     - github_actions
     - gem
