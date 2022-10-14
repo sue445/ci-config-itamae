@@ -20,11 +20,6 @@ github.com/sue445/chatwork_webhook_verify:
     - github_actions
     - gem
 
-github.com/sue445/compact_blank:
-  tags:
-    - github_actions
-    - gem
-
 github.com/sue445/cure_line:
   tags:
     - github_actions
