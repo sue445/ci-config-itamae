@@ -57,7 +57,8 @@ class Cli
     puts "[START] #{repo}"
 
     within_repo_dir(repo) do
-      sh "git checkout master"
+      head_branch = `git remote show origin | grep 'HEAD branch:' | cut -d : -f 2 | tr -d '[[:space:]]'`.strip
+      sh "git checkout #{head_branch}"
       sh "git pull --ff-only"
     end
 
