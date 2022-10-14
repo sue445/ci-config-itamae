@@ -112,7 +112,7 @@ class Cli
     fullpath = `ghq list --full-path --exact #{repo}`.strip
 
     if fullpath.empty?
-      sh "ghq get #{repo}"
+      sh "ghq get -p #{repo}"
       fullpath = `ghq list --full-path --exact #{repo}`.strip
     end
 
