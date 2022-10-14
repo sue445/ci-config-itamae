@@ -191,6 +191,11 @@ github.com/sue445/mysql2-nested_hash_bind:
     - github_actions
     - gem
 
+github.com/sue445/doorkeeper_jp:
+  tags:
+    - github_actions
+    - gem
+
 # Go
 github.com/sue445/go-doorkeeper:
   tags:
