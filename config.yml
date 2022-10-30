@@ -213,6 +213,19 @@ github.com/sue445/chrome-gitlab-notifier:
     - github_actions
     - js
 
+# dockerfile
+github.com/sue445/dockerfile-awscli-all:
+  tags:
+    - dockerfile
+
+github.com/sue445/dockerfile-heroku-cli:
+  tags:
+    - dockerfile
+
+github.com/sue445/dockerfile-vagrant-aws:
+  tags:
+    - dockerfile
+
 # other
 github.com/sue445/jenkins-backup-script:
   tags:
