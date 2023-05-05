@@ -60,11 +60,6 @@ github.com/sue445/google_holiday_calendar:
     - github_actions
     - gem
 
-github.com/sue445/heart_seed:
-  tags:
-    - github_actions
-    - gem
-
 github.com/sue445/index_shotgun:
   tags:
     - github_actions
