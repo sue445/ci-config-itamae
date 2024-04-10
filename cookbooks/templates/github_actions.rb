@@ -1,8 +1,12 @@
-file "#{node[:repo]}/.github/workflows/test.yml" do
-  action :edit
+workflow_files = Dir.glob("#{node[:repo]}/.github/workflows/*.yml")
 
-  block do |content|
+workflow_files.each do |workflow_file|
+  file workflow_file do
+    action :edit
+
+    block do |content|
+    end
+
+    only_if "ls #{workflow_file}"
   end
-
-  only_if "ls #{node[:repo]}/.github/workflows/test.yml"
 end
