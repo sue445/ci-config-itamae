@@ -186,6 +186,16 @@ github.com/sue445/doorkeeper_jp:
     - github_actions
     - gem
 
+github.com/sue445/itest5ch:
+  tags:
+    - github_actions
+    - gem
+
+github.com/sue445/apple_system_status:
+  tags:
+    - github_actions
+    - gem
+
 # Go
 github.com/sue445/go-doorkeeper:
   tags:
