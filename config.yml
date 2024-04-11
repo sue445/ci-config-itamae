@@ -225,7 +225,3 @@ github.com/sue445/dockerfile-vagrant-aws:
 github.com/sue445/jenkins-backup-script:
   tags:
     - github_actions
-
-github.com/sue445/go-mod-tidy-pr:
-  tags:
-    - github_actions
