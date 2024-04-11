@@ -2,7 +2,7 @@
 
 ## Requires
 * Ruby
-* [ghq](https://github.com/motemen/ghq)
+* [ghq](https://github.com/x-motemen/ghq)
 * [gh](https://github.com/cli/cli)
 
 [Create personal access token](https://github.com/settings/tokens/new?description=ci-config-itamae&scopes=repo) and put to `.env` as `GITHUB_TOKEN`
