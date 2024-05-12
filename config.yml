@@ -196,6 +196,11 @@ github.com/sue445/apple_system_status:
     - github_actions
     - gem
 
+github.com/sue445/kagaribi:
+  tags:
+    - github_actions
+    - gem
+
 # Go
 github.com/sue445/go-doorkeeper:
   tags:
