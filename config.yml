@@ -217,12 +217,6 @@ github.com/sue445/gcp-kmsenv:
     - github_actions
     - go
 
-# chrome extension
-github.com/sue445/chrome-gitlab-notifier:
-  tags:
-    - github_actions
-    - js
-
 # dockerfile
 github.com/sue445/dockerfile-awscli-all:
   tags:
