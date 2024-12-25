@@ -201,6 +201,17 @@ github.com/sue445/kagaribi:
     - github_actions
     - gem
 
+github.com/sue445/funnel_http:
+  tags:
+    - github_actions
+    - gem
+
+github.com/ruby-go-gem/ruby_header_parser:
+  tags:
+    - github_actions
+    - gem
+    - go
+
 # Go
 github.com/sue445/go-doorkeeper:
   tags:
