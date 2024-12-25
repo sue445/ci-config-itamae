@@ -18,7 +18,7 @@ YAML
       # using ruby/setup-ruby
       unless content.include?('- "3.4"')
         content.gsub!(<<YAML, <<YAML)
-          - "3.23
+          - "3.3"
 YAML
           - "3.3"
           - "3.4"
