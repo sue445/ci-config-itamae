@@ -210,7 +210,6 @@ github.com/ruby-go-gem/ruby_header_parser:
   tags:
     - github_actions
     - gem
-    - go
 
 # Go
 github.com/sue445/go-doorkeeper:
