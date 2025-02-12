@@ -205,6 +205,7 @@ github.com/sue445/funnel_http:
   tags:
     - github_actions
     - gem
+    - go
 
 github.com/ruby-go-gem/ruby_header_parser:
   tags:
