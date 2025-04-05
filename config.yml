@@ -201,6 +201,11 @@ github.com/sue445/kagaribi:
     - github_actions
     - gem
 
+github.com/sue445/connpass_api_v2-ruby:
+  tags:
+    - github_actions
+    - gem
+
 github.com/sue445/funnel_http:
   tags:
     - github_actions
