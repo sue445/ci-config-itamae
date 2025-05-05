@@ -146,7 +146,7 @@ github.com/sue445/syobocalite:
     - github_actions
     - gem
 
-github.com/sue445/tweet_sanitizer:
+github.com/sue445/x_post_sanitizer:
   tags:
     - github_actions
     - gem
