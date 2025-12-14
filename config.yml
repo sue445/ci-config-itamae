@@ -151,11 +151,6 @@ github.com/sue445/x_post_sanitizer:
     - github_actions
     - gem
 
-github.com/sue445/twitter_retry:
-  tags:
-    - github_actions
-    - gem
-
 github.com/sue445/prismdb-ruby:
   tags:
     - github_actions
