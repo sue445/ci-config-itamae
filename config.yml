@@ -231,10 +231,12 @@ github.com/sue445/gcp-kmsenv:
 # dockerfile
 github.com/sue445/dockerfile-awscli-all:
   tags:
+    - github_actions
     - dockerfile
 
 github.com/sue445/dockerfile-heroku-cli:
   tags:
+    - github_actions
     - dockerfile
 
 # other
