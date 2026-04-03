@@ -239,6 +239,11 @@ github.com/sue445/dockerfile-heroku-cli:
     - github_actions
     - dockerfile
 
+github.com/sue445/dockerfile-packer-serverspec:
+  tags:
+    - github_actions
+    - dockerfile
+
 # other
 github.com/sue445/jenkins-backup-script:
   tags:
