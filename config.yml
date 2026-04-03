@@ -237,10 +237,6 @@ github.com/sue445/dockerfile-heroku-cli:
   tags:
     - dockerfile
 
-github.com/sue445/dockerfile-vagrant-aws:
-  tags:
-    - dockerfile
-
 # other
 github.com/sue445/jenkins-backup-script:
   tags:
